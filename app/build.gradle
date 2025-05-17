@@ -1,10 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
+    id 'org.jetbrains.kotlin.android'
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
 }
 
 android {
     namespace 'com.example.walkietalkie'
     compileSdk 35
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = '1.5.10'
+    }
 
     defaultConfig {
         applicationId "com.example.walkietalkie"
@@ -26,14 +36,28 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = '11'
+        allWarningsAsErrors = false
+        freeCompilerArgs += [
+                '-opt-in=androidx.compose.material3.ExperimentalMaterial3Api'
+        ]
+    }
 }
 
 dependencies {
+    /*
+    Jetpack Compose
+     */
+    implementation "androidx.compose.ui:ui:1.8.1"
+    implementation "androidx.compose.material3:material3:1.3.2"
+    implementation "androidx.activity:activity-compose:1.10.1"
 
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation libs.core.ktx
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
