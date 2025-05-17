@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<style name="RetroTheme" parent="Theme.Material3.Dark">
+    <item name="android:fontFamily">@font/vt323</item>
+    <item name="fontFamily">@font/vt323</item> <!-- Para compatibilidade -->
+</style>
+</resources>
